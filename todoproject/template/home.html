@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>To Do</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" class="mb-4 shadow">
+            {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name="task" placeholder="enter task" style="width: 600px;">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="priority" placeholder="Enter Priority" style="width: 600px;">
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" name="date" style="width: 600px;">
+                </div>
+                <input type="submit" class="btn btn-success">
+            </form>             
+            
+        </div>
+        <div class="col-md-6">
+            <h5>Task to be completed</h5>
+            {% for i in task1 %}
+            <div class="shadow card">
+                <div class="card-body">
+                    <h5 class="card-title"><h3>Task name: {{i.name}}</h3></h5>
+                    <p><b><h6>Priority: {{i.prio}}</h6></b></p>
+                    <p><b><h6>Date: {{i.date}}</h6></b></p>
+                    <a class="btn btn-danger" href="{% url 'deletefun' i.id %}">Delete</a>
+                    <a class="btn btn-success" href="{% url 'updatefun' i.id %}">Update</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
