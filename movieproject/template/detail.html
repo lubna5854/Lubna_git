@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    </head>
+<body>
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{movieobj1.img.url}}" width="100" height="100">
+        </div>
+        <div class="col-md-6">
+            <h2> {{movieobj1.name}}({{movieobj1.year}})</h2>
+            {{movieobj1.desc}}<br><br><br>
+            <a class="btn btn-warning" href="{% url 'movieapp:updatefun' movieobj1.id %}">Update</a><br><br>
+            <a class="btn btn-danger" href="{% url 'movieapp:deletefun' movieobj1.id %}">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock%}
+</body>
+</html>

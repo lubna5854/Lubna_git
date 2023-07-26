@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Movie List</h2>
+    {% for i in movie_list %}
+    {{i.name}}({{i.year}})------>Details : {{i.desc}}<br>
+    {% endfor %}
+</body>
+</html>

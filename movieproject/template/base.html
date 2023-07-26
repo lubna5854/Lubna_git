@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <style>
+        body {
+            text-align: left;font-family:Georgia;font-size: 16px;
+        }
+        h2 {
+            color: rgb(235, 235, 244);
+        }
+        a {
+            color: rgb(8, 35, 237);font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+        <!-- Image and text  Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            Online Movie Store
+        </a>
+    </nav>
+    {% block body %}
+    {% endblock%}
+</body>
+</html>
