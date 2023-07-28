@@ -52,14 +52,14 @@ Cart - ABC company PVT LTD
                     </td>
                     {% if cart_item.quantity < cart_item.product.stock %}
                     <td>
-                        <a href="{% url 'cart_app:add_cart' cart_item.product.id %}" class="custome_a"><i class="fa-sharp fa-solid fa-plus custom_icon"></i></a>
-                        <a href="{% url 'cart_app:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fa-sharp fa-solid fa-minus"></i></a>
-                        &nbsp;<a href="{% url 'cart_app:full_remove' cart_item.product.id %}" class="custom_a"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                        <a href="{% url 'cart_app:add_cart' cart_item.product.id %}" class="custome_a"><i class="fa-solid fa-plus custome_icon">&nbsp;</i></a>
+                        <a href="{% url 'cart_app:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fa-solid fa-minus custome_icon">&nbsp;</i></a>
+                        &nbsp;<a href="{% url 'cart_app:full_remove' cart_item.product.id %}" class="custom_a"><i class="fa-solid fa-trash custome_icon">&nbsp;</i></a>
                     </td>
                     {% else %}
                     <td>
-                        &nbsp;<a href="{% url 'cart_app:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fa-sharp fa-solid fa-minus"></i></a>
-                        &nbsp;<a href="{% url 'cart_app:full_remove' cart_item.product.id %}" class="custom_a"><i class="fa-sharp fa-solid fa-trash"></i></a>
+                        &nbsp;<a href="{% url 'cart_app:cart_remove' cart_item.product.id %}" class="custom_a"><i class="fa-solid fa-minus custome_icon">&nbsp;</i></a>
+                        &nbsp;<a href="{% url 'cart_app:full_remove' cart_item.product.id %}" class="custom_a"><i class="fa-solid fa-trash custome_icon">&nbsp;</i></a>
                     </td>
                     {% endif %}
                 </tr>

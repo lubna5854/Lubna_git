@@ -13,53 +13,69 @@
     {{ category.name }} - Fashion World
 {% else %}
     See our new collection...
-{% endif%}
+{% endif %}
 {% endblock %}
  
 {% block content %}
 {% if category %}
 <div>
-    <div>
+    <div class="row my_row_class">
+        <div class="mx-auto">
         <p>
             <a href="{% url 'shopapp:allProdCat' %}">Our Collections</a>
 
         </p>
+            </div>
     </div>
 </div>
 {% endif %}
-<div>
+<div class="mx_auto">
     {% if category %}
-        <img src="{{category.image.url}}" alt="{{category.name}}">
+        <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}" >
 </div>
 <br>
 <div>
-<h1>{{category.name}}</h1>
-<p>{{category.desc}}</p>
+<h1 class="text-center my_title">{{category.name}}</h1>
+<p class="text-justify">{{category.desc}}</p>
 </div>
     {% else %}
         <div>    
-            <img src="{% static 'image/banner.png' %}" alt="Our Collections">
+            <img class="my_image my_image_padding" src="{% static 'image/banner.png' %}" alt="Our Collections">
         </div>
         <br>
 <div>
-    <h1>Our Collections..</h1>
-    <p>Buck Mason—a menswear brand—doesn’t shy away from images to showcase the soul and origins of its California roots. It’s a great example of how you can use visuals to tell your story and create a brand identity that goes beyond the usual wall of text.
+    <h1 class="text-center my-title">Our Collections..</h1>
+    <p class="text-justify">Buck Mason—a menswear brand—doesn’t shy away from images to showcase the soul and origins of its California roots. It’s a great example of how you can use visuals to tell your story and create a brand identity that goes beyond the usual wall of text.
         One of the best parts of Buck Mason’s About Us page? Its calls to action (CTAs): “Come have a drink” and “Stop on by.” They’re relatable and playful, and they sound like their target audience. 
         Don't ignore your CTA as a key part of your About Us page that can add to your brand identity. It’s an opportunity to convey what your brand is all about. 
     </p>
 </div>
     {% endif %}
-<div>
-    <div>
-         {% for product in products %}
-        <div>
-            <a href="{{product.get_url}}"><img src="{{product.image.url}}" alt="{{product.name}}"></a>
-            <div>
+<div class="container">
+    <div class="row mx-auto">
+         {% for product in products.object_list %}
+        <div class="my_bottom_margin col-6 col-sm-4 col-md-4">
+            <div class="card text-center style=min-width:18rem;">
+            <a href="{{product.get_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}" style="width:200px; height:170px"></a>
+            <div class="card-body">
                 <h4>{{product.name}}</h4>
                 <p>{{product.price}}</p>
+            </div>
             </div>
         </div>
         {% endfor%}
     </div>
+    <div class="mx_auto">
+        {% if products.paginator.num_pages > 1 %}
+
+        <hr>
+        <div class="text-center">
+            {% for pg in products.paginator.page_range %}
+            <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{pg}}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <br>
 </div>
     {% endblock %}

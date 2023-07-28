@@ -1,40 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block metadescription %}
-{{product.descr|truncatewords:155}}
-{% endblock %}
 
+{% block metadescription %}
+    {{product.descr|truncatewords:155}}
+{% endblock %}
 
 {% block title %}
-{% if category %}
-    {{product.name}} - Fashion World
-{% endif %}
+    {% if category %}
+        {{product.name}} - Fashion World
+    {% endif %}
 {% endblock %}
 
-
 {% block content %}
-    <div>
-        <div>
-            <p><a href="{% url 'shopapp:allProdCat' %}">Home</a> | <a href="{{product.category.get_url}}">{{product.category}}</a>{{product.name}}</p>
-        </div>
-    </div>
-    <br>
-    <div>
-        <div>
-            <div>
-                <img src="{{product.image.url}}" alt="{{product.name}}">
-            </div>
-        </div>
-        <div>
-            <div>
-                <h1>{{product.name}}</h1>
-                <p>${{product.price}}</p>
-                <p>Product Description : {{product.descr}}</p>
-                {% if product.stock <= 0 %}
-                <p><b>Out of Stock</b>
-                {% else %}
-                <a href="">Add to Cart</a>
-                {% endif %}          
+    <div class="row my_prod_row_class">
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-md-6 col-sm-4 col-md-4 col-lg-6">
+                    <div style="min-width: 18rem">
+                        <img src="{{product.image.url}}" alt="{{product.name}}">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-8 col-md-8 col-lg-6">
+                    <h1 class="my_prod_title">{{product.name}}</h1>
+                    <p class="text-justify">${{product.price}}</p>
+                    <p class="text-justify my_prod_text">Product Description : {{product.descr}}</p>
+                    {% if product.stock <= 0 %}
+                        <p class="text-justify my_prod_text"><b>Out of Stock</b></p>
+                    {% else %}
+                        <a class="btn btn-secondary" href="{% url 'cart_app:add_cart' product.id %}">Add to Cart</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

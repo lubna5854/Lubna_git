@@ -8,7 +8,7 @@ from django.core.paginator import Paginator,EmptyPage,InvalidPage
 def allProdCat(request,c_slug=None):
     c_page=None
     products_list=None
-    if c_slug!=None:
+    if c_slug != None:
         c_page=get_object_or_404(Category,slug=c_slug)
         products_list=Product.objects.all().filter(category=c_page,available=True)
     else:
