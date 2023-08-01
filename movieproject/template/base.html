@@ -27,7 +27,14 @@
         <a class="navbar-brand" href="#">
             Online Movie Store
         </a>
+        <div>
+            <div class="text-center">
+        <a href="{% url 'movieapp:addfun' %}" class="btn btn-primary" >Click to Add</a>
+        </div>
+    </div>
     </nav>
+    
+    
     {% block body %}
     {% endblock%}
 </body>
